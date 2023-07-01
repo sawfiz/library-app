@@ -11,27 +11,8 @@ import {
 } from 'firebase/firestore';
 import Book from './Book';
 
-export default function Books() {
-  const [bookList, setBookList] = useState([]);
+export default function Books( {getBooks, bookList}) {
 
-  const booksCol = collection(db, 'books');
-
-  const getBooks = async () => {
-    try {
-      const data = await getDocs(booksCol);
-      const filteredData = data.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setBookList(filteredData);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    getBooks();
-  }, [bookList]);
 
   return (
     <div>
