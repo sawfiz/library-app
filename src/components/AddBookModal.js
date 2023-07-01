@@ -25,43 +25,53 @@ export default function AddBookModal({ isOpen, closeModal, getBooks }) {
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={closeModal}>
-      <h2>Add Book</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Title:
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </label>
-        <label>
-          Author:
-          <input
-            type="text"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-          />
-        </label>
-        <label>
-          Pages:
-          <input
-            type="number"
-            value={pages}
-            onChange={(e) => setPages(e.target.value)}
-          />
-        </label>
-        <label>
-          Read:
-          <input
-            type="checkbox"
-            checked={isRead}
-            onChange={(e) => setIsRead(e.target.checked)}
-          />
-        </label>
-        <button type="submit">Add</button>
+    <Modal className="add-book-modal" isOpen={isOpen} onRequestClose={closeModal}>
+      <h2>New Book</h2>
+      <fieldset>
+      <form className="add-book-form" onSubmit={handleSubmit}>
+        <div className='add-book-input'>
+          <label>
+            Title:
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Author:
+            <input
+              type="text"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Pages:
+            <input
+              type="number"
+              value={pages}
+              onChange={(e) => setPages(e.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Read:
+            <input
+              type="checkbox"
+              checked={isRead}
+              onChange={(e) => setIsRead(e.target.checked)}
+            />
+          </label>
+        </div>
+        <button className="add-book-submit" type="submit">Add</button>
       </form>
+      </fieldset>
     </Modal>
   );
 }
