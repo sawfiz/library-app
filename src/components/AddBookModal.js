@@ -25,52 +25,62 @@ export default function AddBookModal({ isOpen, closeModal, getBooks }) {
   };
 
   return (
-    <Modal className="add-book-modal" isOpen={isOpen} onRequestClose={closeModal}>
+    <Modal
+      className="add-book-modal"
+      isOpen={isOpen}
+      onRequestClose={closeModal}
+    >
       <h2>New Book</h2>
       <fieldset>
-      <form className="add-book-form" onSubmit={handleSubmit}>
-        <div className='add-book-input'>
-          <label>
-            Title:
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Author:
-            <input
-              type="text"
-              value={author}
-              onChange={(e) => setAuthor(e.target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Pages:
-            <input
-              type="number"
-              value={pages}
-              onChange={(e) => setPages(e.target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Read:
-            <input
-              type="checkbox"
-              checked={isRead}
-              onChange={(e) => setIsRead(e.target.checked)}
-            />
-          </label>
-        </div>
-        <button className="add-book-submit" type="submit">Add</button>
-      </form>
+        <form className="add-book-form" onSubmit={handleSubmit}>
+          <div className="add-book-input">
+            <label htmlFor="title">
+              Title:
+              <input
+                id="title"
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="author">
+              Author:
+              <input
+                id="author"
+                type="text"
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="pages">
+              Pages:
+              <input
+                id="pages"
+                type="number"
+                value={pages}
+                onChange={(e) => setPages(e.target.value)}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="isRead">
+              Read:
+              <input
+                id="isRead"
+                type="checkbox"
+                checked={isRead}
+                onChange={(e) => setIsRead(e.target.checked)}
+              />
+            </label>
+          </div>
+          <button className="add-book-submit" type="submit">
+            Add
+          </button>
+        </form>
       </fieldset>
     </Modal>
   );
