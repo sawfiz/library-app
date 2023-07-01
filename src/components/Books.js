@@ -23,7 +23,6 @@ export default function Books() {
         ...doc.data(),
         id: doc.id,
       }));
-      console.log(filteredData);
       setBookList(filteredData);
     } catch (err) {
       console.error(err);

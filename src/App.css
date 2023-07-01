@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  border: 1px red solid;
+  /* border: 1px red solid; */
   box-sizing: border-box;
 }
 
@@ -19,7 +19,7 @@ h1 {
 
 .books-header, .book {
   display: grid;
-  grid-template-columns: 5fr 3fr 1fr 1fr;
+  grid-template-columns: 50% 25% 15% 10% 10%;
 }
 
 .books-header {
@@ -37,4 +37,13 @@ h1 {
 }
 .isRead {
   text-align: center;
+  cursor: pointer;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.edit-button, .delete-button {
+  cursor: pointer;
 }
