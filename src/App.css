@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 1px red solid;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+.books-container {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.books-header, .book {
+  display: grid;
+  grid-template-columns: 5fr 3fr 1fr 1fr;
+}
+
+.books-header {
+  text-align: center;
+}
+
+.title, .author, .pages, .isRead {
+  padding: 0.1rem 0.5rem;
+}
+.title, .author {
+  text-align: left;
+}
+.pages {
+  text-align: right;
+}
+.isRead {
+  text-align: center;
+}
