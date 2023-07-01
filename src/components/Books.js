@@ -31,12 +31,12 @@ export default function Books() {
 
   useEffect(() => {
     getBooks();
-  }, []);
+  }, [bookList]);
 
   return (
     <div>
       {bookList.map((book) => {
-        return <Book key={book.id} book={book} />;
+        return <Book key={book.id} book={book} getBooks={getBooks}/>;
       })}
     </div>
   );

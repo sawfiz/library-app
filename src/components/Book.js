@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { doc, deleteDoc } from "firebase/firestore";
+import { db } from "../config/firebase";
 
-export default function Book({ book }) {
+export default function Book({ book, getBooks }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -10,6 +12,12 @@ export default function Book({ book }) {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
+  const deleteBook = async (id) => {
+    const bookDoc = doc(db, "books", id)
+    await deleteDoc(bookDoc)
+    getBooks()
+  }
 
   return (
     <div
@@ -24,7 +32,7 @@ export default function Book({ book }) {
       {isHovered && (
         <div className="buttons">
           <button className="edit-button">✍️</button>
-          <button className="delete-button">🗑️</button>
+          <button className="delete-button" onClick={()=>deleteBook(book.id)}>🗑️</button>
         </div>
       )}
     </div>
