@@ -55,6 +55,7 @@ input {
 }
 
 .books-container {
+  background: #fcf8e8;
   width: 80%;
   margin: auto;
   display: flex;

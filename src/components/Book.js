@@ -1,9 +1,20 @@
 import { useState } from 'react';
 import { doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
+import EditBookModal from './EditBookModal'
 
 export default function Book({ book, getBooks }) {
   const [isHovered, setIsHovered] = useState(false);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -41,12 +52,13 @@ export default function Book({ book, getBooks }) {
       </div>
       {isHovered && (
         <div className="buttons">
-          <button className="edit-button">✍️</button>
+          <button className="edit-button" onClick={openModal}>✍️</button>
           <button className="delete-button" onClick={() => deleteBook(book.id)}>
             🗑️
           </button>
         </div>
       )}
+      <EditBookModal isOpen={isModalOpen} closeModal={closeModal} getBooks={getBooks} book={book}/>
     </div>
   );
 }
