@@ -11,12 +11,13 @@ export default function AddBook({getBooks}) {
 
   const closeModal = () => {
     setIsModalOpen(false);
+    getBooks();
   };
   
   return (
     <div>
       <button onClick={openModal}>Add</button>
-      <AddBookModal isOpen={isModalOpen} closeModal={closeModal} getBooks={getBooks}/>
+      <AddBookModal isOpen={isModalOpen} closeModal={closeModal}/>
       </div>
   )
 }

@@ -16,13 +16,12 @@ export default function App() {
 
   const getBooks = async () => {
     try {
-      console.log("getting books");
       const data = await getDocs(booksCol);
       const filteredData = data.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
-      console.log(filteredData);
+      // console.log(filteredData);
       setBookList(filteredData);
     } catch (err) {
       console.error(err);

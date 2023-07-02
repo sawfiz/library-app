@@ -5,7 +5,7 @@ import { db } from '../config/firebase';
 
 Modal.setAppElement('#root'); // Set the root element for the modal
 
-export default function AddBookModal({ isOpen, closeModal, getBooks }) {
+export default function AddBookModal({ isOpen, closeModal }) {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [pages, setPages] = useState('');
@@ -18,7 +18,6 @@ export default function AddBookModal({ isOpen, closeModal, getBooks }) {
       const bookData = { title, author, pages, isRead };
       await addDoc(collection(db, 'books'), bookData);
       closeModal(); // Close the modal after successfully adding the book
-      getBooks();
     } catch (error) {
       console.error('Error adding book:', error);
     }
