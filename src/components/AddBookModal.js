@@ -25,14 +25,14 @@ export default function AddBookModal({ isOpen, closeModal }) {
 
   return (
     <Modal
-      className="add-book-modal"
+      className="book-details-modal"
       isOpen={isOpen}
       onRequestClose={closeModal}
     >
       <h2>New Book</h2>
       <fieldset>
-        <form className="add-book-form" onSubmit={handleSubmit}>
-          <div className="add-book-input">
+        <form className="book-details-form" onSubmit={handleSubmit}>
+          <div>
             <label htmlFor="title">
               Title:
               <input
@@ -76,7 +76,7 @@ export default function AddBookModal({ isOpen, closeModal }) {
               />
             </label>
           </div>
-          <button className="add-book-submit" type="submit">
+          <button className="submit-button" type="submit">
             Add
           </button>
         </form>

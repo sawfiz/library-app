@@ -9,7 +9,7 @@ h1 {
   text-align: center;
 }
 
-.add-book-modal {
+.book-details-modal {
   position:fixed;
   left: 50%;
   top: 50%;
@@ -30,17 +30,11 @@ fieldset {
   color: #111;
 }
 
-.add-book-form {
+.book-details-form {
   display: flex;
   width: 240px;
   flex-direction: column;
   gap: 0.5rem;
-}
-
-.add-book-input {
-}
-
-label {
 }
 
 input {
@@ -49,7 +43,7 @@ input {
   outline: none;
 }
 
-.add-book-submit {
+.submit-button {
   width: 5rem;
   margin: auto;
 }

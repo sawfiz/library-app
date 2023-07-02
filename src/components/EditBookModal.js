@@ -1,28 +1,23 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { doc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
 
 Modal.setAppElement('#root'); // Set the root element for the modal
 
-export default function EditBookModal({
-  isOpen,
-  closeModal,
-  bookToEdit,
-}) {
+export default function EditBookModal({ isOpen, closeModal, bookToEdit }) {
   console.log('Book to edit in modal', bookToEdit);
   if (bookToEdit) {
     console.log(bookToEdit.title);
   }
-  // const [title, setTitle] = useState(bookToEdit?.title);
   const [title, setTitle] = useState(bookToEdit?.title);
-  console.log('🚀 ~ file: EditBookModal.js:11 ~ EditBookModal ~ title:', title);
+  // console.log('🚀 ~ file: EditBookModal.js:11 ~ EditBookModal ~ title:', title);
   const [author, setAuthor] = useState(bookToEdit?.author);
-  console.log("🚀 ~ file: EditBookModal.js:21 ~ author:", author)
+  // console.log("🚀 ~ file: EditBookModal.js:21 ~ author:", author)
   const [pages, setPages] = useState(bookToEdit?.pages);
-  console.log("🚀 ~ file: EditBookModal.js:23 ~ pages:", pages)
+  // console.log("🚀 ~ file: EditBookModal.js:23 ~ pages:", pages)
   const [isRead, setIsRead] = useState(bookToEdit?.isRead);
-  console.log("🚀 ~ file: EditBookModal.js:25 ~ isRead:", isRead)
+  // console.log("🚀 ~ file: EditBookModal.js:25 ~ isRead:", isRead)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,20 +28,20 @@ export default function EditBookModal({
       await updateDoc(bookDoc, bookData);
       closeModal(); // Close the modal after successfully adding the book
     } catch (error) {
-      console.error('Error adding book:', error);
+      console.error('Error editing book:', error);
     }
   };
 
   return (
     <Modal
-      className="add-book-modal"
+      className="book-details-modal"
       isOpen={isOpen}
       onRequestClose={closeModal}
     >
       <h2>Edit Book</h2>
       <fieldset>
-        <form className="add-book-form" onSubmit={handleSubmit}>
-          <div className="add-book-input">
+        <form className="book-details-form" onSubmit={handleSubmit}>
+          <div>
             <label htmlFor="title">
               Title:
               <input
@@ -90,7 +85,7 @@ export default function EditBookModal({
               />
             </label>
           </div>
-          <button className="add-book-submit" type="submit">
+          <button className="submit-button" type="submit">
             Update
           </button>
         </form>
