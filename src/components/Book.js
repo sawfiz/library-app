@@ -3,7 +3,7 @@ import { doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
 
 
-export default function Book({ book, getBooks, passBookToEdit }) {
+export default function Book({ book, getBooks, editBook }) {
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -44,7 +44,7 @@ export default function Book({ book, getBooks, passBookToEdit }) {
       </div>
       {isHovered && (
         <div className="buttons">
-          <button className="edit-button" onClick={() => passBookToEdit(book)}>✍️</button>
+          <button className="edit-button" onClick={() => editBook(book)}>✍️</button>
           <button className="delete-button" onClick={() => deleteBook(book.id)}>
             🗑️
           </button>

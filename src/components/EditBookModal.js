@@ -1,29 +1,15 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { doc, updateDoc } from 'firebase/firestore';
-import { db } from '../config/firebase';
 
 Modal.setAppElement('#root'); // Set the root element for the modal
 
-export default function EditBookModal({ isOpen, closeModal, bookToEdit }) {
-  const [title, setTitle] = useState(bookToEdit?.title);
-  const [author, setAuthor] = useState(bookToEdit?.author);
-  const [pages, setPages] = useState(bookToEdit?.pages);
-  const [isRead, setIsRead] = useState(bookToEdit?.isRead);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const bookDoc = doc(db, 'books', bookToEdit.id);
-      const bookData = { title, author, pages, isRead };
-      await updateDoc(bookDoc, bookData);
-      closeModal(); // Close the modal after successfully adding the book
-    } catch (error) {
-      console.error('Error editing book:', error);
-    }
-  };
-
+export default function EditBookModal({
+  isOpen,
+  closeModal,
+  bookToEdit,
+  handleChange,
+  handleSubmit,
+}) {
   return (
     <Modal
       className="book-details-modal"
@@ -37,10 +23,10 @@ export default function EditBookModal({ isOpen, closeModal, bookToEdit }) {
             <label htmlFor="title">
               Title:
               <input
-                id="title"
+                name="title"
                 type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={bookToEdit.title}
+                onChange={handleChange}
               />
             </label>
           </div>
@@ -48,10 +34,10 @@ export default function EditBookModal({ isOpen, closeModal, bookToEdit }) {
             <label htmlFor="author">
               Author:
               <input
-                id="author"
+                name="author"
                 type="text"
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
+                value={bookToEdit.author}
+                onChange={handleChange}
               />
             </label>
           </div>
@@ -59,10 +45,10 @@ export default function EditBookModal({ isOpen, closeModal, bookToEdit }) {
             <label htmlFor="pages">
               Pages:
               <input
-                id="pages"
+                name="pages"
                 type="number"
-                value={pages}
-                onChange={(e) => setPages(e.target.value)}
+                value={bookToEdit.pages}
+                onChange={handleChange}
               />
             </label>
           </div>
@@ -70,10 +56,10 @@ export default function EditBookModal({ isOpen, closeModal, bookToEdit }) {
             <label htmlFor="isRead">
               Read:
               <input
-                id="isRead"
+                name="isRead"
                 type="checkbox"
-                checked={isRead}
-                onChange={(e) => setIsRead(e.target.checked)}
+                checked={bookToEdit.isRead}
+                onChange={handleChange}
               />
             </label>
           </div>
