@@ -8,7 +8,7 @@ Modal.setAppElement('#root'); // Set the root element for the modal
 export default function AddBookModal({ isOpen, closeModal }) {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
-  const [pages, setPages] = useState('');
+  const [pages, setPages] = useState(0);
   const [isRead, setIsRead] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -38,7 +38,7 @@ export default function AddBookModal({ isOpen, closeModal }) {
               <input
                 id="title"
                 type="text"
-                value={title}
+                // value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
             </label>
@@ -49,7 +49,7 @@ export default function AddBookModal({ isOpen, closeModal }) {
               <input
                 id="author"
                 type="text"
-                value={author}
+                // value={author}
                 onChange={(e) => setAuthor(e.target.value)}
               />
             </label>
@@ -60,7 +60,7 @@ export default function AddBookModal({ isOpen, closeModal }) {
               <input
                 id="pages"
                 type="number"
-                value={pages}
+                // value={pages}
                 onChange={(e) => setPages(e.target.value)}
               />
             </label>
@@ -71,7 +71,7 @@ export default function AddBookModal({ isOpen, closeModal }) {
               <input
                 id="isRead"
                 type="checkbox"
-                checked={isRead}
+                // checked={isRead}
                 onChange={(e) => setIsRead(e.target.checked)}
               />
             </label>

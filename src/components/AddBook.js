@@ -17,7 +17,7 @@ export default function AddBook({getBooks}) {
   return (
     <div>
       <button onClick={openModal}>Add</button>
-      <AddBookModal isOpen={isModalOpen} closeModal={closeModal}/>
+      {isModalOpen && <AddBookModal isOpen={isModalOpen} closeModal={closeModal}/>}
       </div>
   )
 }
