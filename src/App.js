@@ -8,9 +8,32 @@ import './App.css';
 export default function App() {
   const [bookList, setBookList] = useState([]);
 
+  const [titleSortDir, setTitleSortDir] = useState(true);
+  const [authorSortDir, setAuthorSortDir] = useState(true);
+  const [pagesSortDir, setPagesSortDir] = useState(true);
+  const [readSortDir, setReadSortDir] = useState(true);
+
   const booksCol = collection(db, 'books');
 
-  const getBooks = async () => {
+  const sortString = (array, key, dir) => {
+    array.sort((a, b) => {
+      const compareResult = a[key].localeCompare(b[key]);
+      return dir ? compareResult : -compareResult;
+    });
+  };
+  
+  const sortNumber = (array, key, dir) => {
+    array.sort((a, b) => (dir ? a[key] - b[key] : b[key] - a[key]));
+  };
+
+  const sortBoolean = (array, key, dir) => {
+    array.sort((a, b) => {
+      const compareResult = a[key] === b[key] ? 0 : a[key] ? -1 : 1;
+      return dir ? compareResult : -compareResult;
+    });
+  };
+
+  const getBooks = async (key = 'title', aToZ = true) => {
     try {
       const data = await getDocs(booksCol);
       const filteredData = data.docs.map((doc) => ({
@@ -18,10 +41,29 @@ export default function App() {
         id: doc.id,
       }));
 
-      // Sort the filteredData array alphabetically based on book title
-      filteredData.sort((a, b) => a.title.localeCompare(b.title));
+      switch (key) {
+        case 'title':
+          setTitleSortDir(!titleSortDir);
+          sortString(filteredData, key, titleSortDir)
+          break;
+        case 'author':
+          setAuthorSortDir(!authorSortDir);
+          sortString(filteredData, key, authorSortDir)
+          break;
+        case 'pages':
+          setPagesSortDir(!pagesSortDir);
+          sortNumber(filteredData, key, pagesSortDir)
+          break;
+        case 'isRead':
+          setReadSortDir(!readSortDir);
+          sortBoolean(filteredData, key, readSortDir)
+          break;
 
-      // console.log(filteredData);
+        default:
+          // Sort the filteredData array alphabetically based on book title
+          sortString(filteredData, key, true);
+          break;
+      }
       setBookList(filteredData);
     } catch (err) {
       console.error(err);
@@ -38,10 +80,18 @@ export default function App() {
       <AddBook getBooks={getBooks} />
       <div className="books-container">
         <div className="books-header">
-          <div>Title</div>
-          <div>Author</div>
-          <div>Pages</div>
-          <div>isRead</div>
+          <div>
+            Title <button onClick={() => getBooks('title')}>↕️</button>
+          </div>
+          <div>
+            Author <button onClick={() => getBooks('author')}>↕️</button>
+          </div>
+          <div>
+            Pages <button onClick={() => getBooks('pages')}>↕️</button>
+          </div>
+          <div>
+            Read <button onClick={() => getBooks('isRead')}>↕️</button>
+          </div>
         </div>
         <Books getBooks={getBooks} bookList={bookList} />
       </div>
