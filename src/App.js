@@ -7,11 +7,11 @@ import BookListContextProvider from './contexts/BookListContext';
 
 export default function App() {
   return (
-    <div>
+    <div className='app'>
       <h1>My Reading List</h1>
       <BookListContextProvider>
         <AddBook />
-        <div className="books-container">
+        <div>
           <BooksHeader />
           <Books />
         </div>

@@ -18,19 +18,19 @@ export default function BookListContextProvider(props) {
   const sortArray = (array, key, dir) => {
     array.sort((a, b) => {
       // Sort strings
-      if (key === 'title' || key === 'author') {
+      if (key === 'title' || key === 'author' || key === "status") {
         return dir
           ? a[key].localeCompare(b[key])
           : b[key].localeCompare(a[key]);
       }
       // Sort numbers
-      if (key === 'pages') {
+      if (key === 'year') {
         return dir ? a[key] - b[key] : b[key] - a[key];
       }
       // Sort boolean
-      if (key === 'isRead') {
-        return dir ? (a[key] ? -1 : 1) : a[key] ? 1 : -1;
-      }
+      // if (key === 'isRead') {
+      //   return dir ? (a[key] ? -1 : 1) : a[key] ? 1 : -1;
+      // }
     });
   };
 

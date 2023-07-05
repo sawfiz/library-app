@@ -16,7 +16,7 @@ export default function BooksHeader() {
         Year <button onClick={() => getBooks('year', toggleSort)}>↕️</button>
       </div>
       <div>
-        Read <button onClick={() => getBooks('isRead', toggleSort)}>↕️</button>
+        Status <button onClick={() => getBooks('status', toggleSort)}>↕️</button>
       </div>
     </div>
   );

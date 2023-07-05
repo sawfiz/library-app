@@ -4,6 +4,7 @@ import { db } from '../config/firebase';
 import { BookListContext } from '../contexts/BookListContext';
 
 export default function Book({ book, editBook }) {
+  console.log('🚀 ~ file: Book.js:7 ~ Book ~ book:', book);
   const { getBooks } = useContext(BookListContext);
 
   const [isHovered, setIsHovered] = useState(false);
@@ -34,14 +35,15 @@ export default function Book({ book, editBook }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="title"><a href={book.url} target="_blank" rel="noopener noreferrer">{book.title}</a></div>
-      <div className="author">{book.author}</div>
-      <div className="year">{book.year}</div>
-      <div
-        className="isRead"
-        onClick={() => changeReadStatus(book.id, book.isRead)}
-      >
-        {book.isRead ? '✅' : '❌'}
+      <div>
+        <a href={book.url} target="_blank" rel="noopener noreferrer">
+          {book.title}
+        </a>
+      </div>
+      <div>{book.author}</div>
+      <div>{book.year}</div>
+      <div onClick={() => changeReadStatus(book.id, book.isRead)}>
+        {book.status}
       </div>
       {isHovered && (
         <div className="buttons">

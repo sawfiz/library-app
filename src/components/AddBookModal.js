@@ -11,10 +11,10 @@ export default function AddBookModal({ isOpen, closeModal }) {
     author: '',
     year: 0,
     url: '',
-    isRead: false,
+    status: 'wantToRead',
   });
 
-  const { title, author, year, url, isRead } = formData;
+  const { title, author, year, url, status } = formData;
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -27,7 +27,7 @@ export default function AddBookModal({ isOpen, closeModal }) {
     e.preventDefault();
 
     try {
-      const bookData = { title, author, year, isRead };
+      const bookData = { title, author, year, status };
       console.log(
         '🚀 ~ file: AddBookModal.js:30 ~ handleSubmit ~ bookData:',
         bookData
@@ -97,16 +97,16 @@ export default function AddBookModal({ isOpen, closeModal }) {
             />
           </label>
         </div>
-        <div >
-          <label htmlFor="isRead">
+        <div>
+          <label htmlFor="status">
             Read:
-            <input
-              id="isRead"
-              type="checkbox"
-              name="isRead"
-              checked={isRead}
-              onChange={handleChange}
-            />
+            <select id="status">
+            <option value="Want to read">Want to read</option>
+              <option value="Not started">Not started</option>
+              <option value="Reading">Reading</option>
+              <option value="Read">Read</option>
+              <option value="Re-reading">Re-reading</option>
+            </select>
           </label>
         </div>
 

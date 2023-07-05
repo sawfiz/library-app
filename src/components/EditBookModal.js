@@ -65,16 +65,17 @@ export default function EditBookModal({
               />
             </label>
           </div>
-          <div className="input-container">
-            <label htmlFor="isRead">
-              Read:
-              <input
-                name="isRead"
-                type="checkbox"
-                checked={bookToEdit.isRead}
-                onChange={handleChange}
-              />
-            </label>
+          <div>
+          <label htmlFor="status">
+            Read:
+            <select id="status" name="status" value={bookToEdit.status} onChange={handleChange}>
+              <option value="Want to read">Want to read</option>
+              <option value="Not started">Not started</option>
+              <option value="Reading">Reading</option>
+              <option value="Read">Read</option>
+              <option value="Re-reading">Re-reading</option>
+            </select>
+          </label>
           </div>
           <div className='submit-button-container'>
             <button className="submit-button" type="submit">
