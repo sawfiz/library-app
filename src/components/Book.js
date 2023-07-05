@@ -43,14 +43,15 @@ export default function Book({ book, editBook, editNotes }) {
         </a>
       </div>
       <div>{book.author}</div>
-      <div>{book.year}</div>
+      <div className='year'>{book.year}</div>
       <BookStatus
         book={book}
         handleChangeStatus={handleChangeStatus}
       ></BookStatus>
       <div className="right">
-        <button className="notes-button" onClick={() => editNotes(book)}> {isNotes ? '📝' : '🗒️' }
-          
+        <button className="notes-button" onClick={() => editNotes(book)}>
+          {' '}
+          {isNotes ? '📝' : '🗒️'}
         </button>
       </div>
       {isHovered && (

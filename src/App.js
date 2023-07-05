@@ -1,20 +1,17 @@
 import React from 'react';
 import Books from './components/Books';
-import AddBook from './components/AddBook';
 import './App.css';
+import Header from './components/Header';
 import BooksHeader from './components/BooksHeader';
 import BookListContextProvider from './contexts/BookListContext';
 
 export default function App() {
   return (
-    <div className='app'>
-      <h1>My Reading List</h1>
+    <div className="app">
       <BookListContextProvider>
-        <AddBook />
-        <div>
-          <BooksHeader />
-          <Books />
-        </div>
+        <Header></Header>
+        <BooksHeader />
+        <Books />
       </BookListContextProvider>
     </div>
   );
