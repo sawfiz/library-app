@@ -6,16 +6,32 @@ import { db } from '../config/firebase';
 Modal.setAppElement('#root'); // Set the root element for the modal
 
 export default function AddBookModal({ isOpen, closeModal }) {
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [pages, setPages] = useState(0);
-  const [isRead, setIsRead] = useState(false);
+  const [formData, setFormData] = useState({
+    title: '',
+    author: '',
+    year: 0,
+    url: '',
+    isRead: false,
+  });
+
+  const { title, author, year, url, isRead } = formData;
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === 'checkbox' ? checked : value;
+    setFormData((prevData) => ({ ...prevData, [name]: newValue }));
+  };
 
   const handleSubmit = async (e) => {
+    console.log('Add button clicked');
     e.preventDefault();
 
     try {
-      const bookData = { title, author, pages, isRead };
+      const bookData = { title, author, year, isRead };
+      console.log(
+        '🚀 ~ file: AddBookModal.js:30 ~ handleSubmit ~ bookData:',
+        bookData
+      );
       await addDoc(collection(db, 'books'), bookData);
       closeModal(); // Close the modal after successfully adding the book
     } catch (error) {
@@ -30,57 +46,76 @@ export default function AddBookModal({ isOpen, closeModal }) {
       onRequestClose={closeModal}
     >
       <h2>New Book</h2>
-      <fieldset>
-        <form className="book-details-form" onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="title">
-              Title:
-              <input
-                id="title"
-                type="text"
-                // value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="author">
-              Author:
-              <input
-                id="author"
-                type="text"
-                // value={author}
-                onChange={(e) => setAuthor(e.target.value)}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="pages">
-              Pages:
-              <input
-                id="pages"
-                type="number"
-                // value={pages}
-                onChange={(e) => setPages(e.target.value)}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="isRead">
-              Read:
-              <input
-                id="isRead"
-                type="checkbox"
-                // checked={isRead}
-                onChange={(e) => setIsRead(e.target.checked)}
-              />
-            </label>
-          </div>
+      <form className="book-details-form" onSubmit={handleSubmit}>
+        <div className="input-container">
+          <label htmlFor="title">
+            Title:
+            <input
+              id="title"
+              type="text"
+              name="title"
+              value={title}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <label htmlFor="author">
+            Author:
+            <input
+              id="author"
+              type="text"
+              name="author"
+              value={author}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <label htmlFor="year">
+            Year:
+            <input
+              id="year"
+              type="number"
+              name="year"
+              // value={year}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+        <div className="url-text-container">
+          <label htmlFor="url">
+            Link:
+            <textarea
+              className="url-text"
+              id="url"
+              type="text"
+              name="url"
+              rows="3"
+              value={url}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+        <div >
+          <label htmlFor="isRead">
+            Read:
+            <input
+              id="isRead"
+              type="checkbox"
+              name="isRead"
+              checked={isRead}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+
+        <div className="submit-button-container">
           <button className="submit-button" type="submit">
             Add
           </button>
-        </form>
-      </fieldset>
+        </div>
+      </form>
     </Modal>
   );
 }

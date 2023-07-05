@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { BookListContext } from '../contexts/BookListContext';
 
 export default function BooksHeader() {
-  const { bookList, getBooks } = useContext(BookListContext);
+  const { getBooks } = useContext(BookListContext);
   const toggleSort = true;
   return (
     <div className="books-header">
@@ -13,7 +13,7 @@ export default function BooksHeader() {
         Author <button onClick={() => getBooks('author', toggleSort)}>↕️</button>
       </div>
       <div>
-        Pages <button onClick={() => getBooks('pages', toggleSort)}>↕️</button>
+        Year <button onClick={() => getBooks('year', toggleSort)}>↕️</button>
       </div>
       <div>
         Read <button onClick={() => getBooks('isRead', toggleSort)}>↕️</button>

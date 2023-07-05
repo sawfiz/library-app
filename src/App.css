@@ -10,7 +10,7 @@ h1 {
 }
 
 .book-details-modal {
-  position:fixed;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -23,29 +23,43 @@ h1 {
   align-items: center;
 }
 
-fieldset {
-  background: #fcf8ea;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  color: #111;
-}
-
 .book-details-form {
+  background: #fcf8ea;
   display: flex;
-  width: 240px;
+  width: 450px;
+  padding: 1rem 1rem 1rem 1rem;
   flex-direction: column;
-  gap: 0.5rem;
 }
-
+.input-container {
+  margin: 0.25rem;
+}
 input {
   position: absolute;
   left: 7rem;
+  width: 320px;
   outline: none;
 }
-
+.url-text-container {
+  margin: 0.25rem;
+  height: 3rem;
+}
+.url-text {
+  position: absolute;
+  left: 7rem;
+  width: 320px;
+  resize: none;
+  outline: none;
+  margin-bottom: 3rem;
+}
+.left-align {
+  position: absolute;
+  left: 0rem;
+}
+.submit-button-container {
+  margin: auto;
+}
 .submit-button {
   width: 5rem;
-  margin: auto;
 }
 
 .books-container {
@@ -57,7 +71,8 @@ input {
   flex-direction: column;
 }
 
-.books-header, .book {
+.books-header,
+.book {
   display: grid;
   grid-template-columns: 50% 25% 15% 10% 10%;
 }
@@ -66,10 +81,14 @@ input {
   text-align: center;
 }
 
-.title, .author, .pages, .isRead {
+.title,
+.author,
+.pages,
+.isRead {
   padding: 0.1rem 0.5rem;
 }
-.title, .author {
+.title,
+.author {
   text-align: left;
 }
 .pages {
@@ -84,6 +103,7 @@ input {
   justify-content: center;
   gap: 0.5rem;
 }
-.edit-button, .delete-button {
+.edit-button,
+.delete-button {
   cursor: pointer;
 }

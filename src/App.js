@@ -8,7 +8,7 @@ import BookListContextProvider from './contexts/BookListContext';
 export default function App() {
   return (
     <div>
-      <h1>Library</h1>
+      <h1>My Reading List</h1>
       <BookListContextProvider>
         <AddBook />
         <div className="books-container">

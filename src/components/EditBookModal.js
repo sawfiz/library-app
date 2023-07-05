@@ -17,9 +17,8 @@ export default function EditBookModal({
       onRequestClose={closeModal}
     >
       <h2>Edit Book</h2>
-      <fieldset>
         <form className="book-details-form" onSubmit={handleSubmit}>
-          <div>
+        <div className="input-container">
             <label htmlFor="title">
               Title:
               <input
@@ -30,7 +29,7 @@ export default function EditBookModal({
               />
             </label>
           </div>
-          <div>
+          <div className="input-container">
             <label htmlFor="author">
               Author:
               <input
@@ -41,18 +40,32 @@ export default function EditBookModal({
               />
             </label>
           </div>
-          <div>
-            <label htmlFor="pages">
-              Pages:
+          <div className="input-container">
+            <label htmlFor="year">
+              Year:
               <input
-                name="pages"
+                name="year"
                 type="number"
-                value={bookToEdit.pages}
+                value={bookToEdit.year}
                 onChange={handleChange}
               />
             </label>
           </div>
-          <div>
+          <div className="url-text-container">
+            <label htmlFor="url">
+              Link:
+              <textarea
+                id="rul"
+                type="text"
+                name="url"
+                rows='3'
+                className='url-text'
+                value={bookToEdit.url}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          <div className="input-container">
             <label htmlFor="isRead">
               Read:
               <input
@@ -63,11 +76,12 @@ export default function EditBookModal({
               />
             </label>
           </div>
-          <button className="submit-button" type="submit">
-            Update
-          </button>
+          <div className='submit-button-container'>
+            <button className="submit-button" type="submit">
+              Update
+            </button>
+          </div>
         </form>
-      </fieldset>
     </Modal>
   );
 }

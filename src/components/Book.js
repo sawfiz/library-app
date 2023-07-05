@@ -34,9 +34,9 @@ export default function Book({ book, editBook }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="title">{book.title}</div>
+      <div className="title"><a href={book.url} target="_blank" rel="noopener noreferrer">{book.title}</a></div>
       <div className="author">{book.author}</div>
-      <div className="pages">{book.pages}</div>
+      <div className="year">{book.year}</div>
       <div
         className="isRead"
         onClick={() => changeReadStatus(book.id, book.isRead)}
