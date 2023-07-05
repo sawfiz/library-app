@@ -1,71 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { db } from './config/firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import React from 'react';
 import Books from './components/Books';
 import AddBook from './components/AddBook';
 import './App.css';
 import BooksHeader from './components/BooksHeader';
+import BookListContextProvider from './contexts/BookListContext';
 
 export default function App() {
-  const [bookList, setBookList] = useState([]);
-  const [sortDirections, setSortDirections] = useState({
-    title: true,
-    author: true,
-    pages: true,
-    isRead: true,
-  });
-
-  const booksCol = collection(db, 'books');
-
-  const sortArray = (array, key, dir) => {
-    array.sort((a, b) => {
-      // Sort strings
-      if (key === 'title' || key === 'author') {
-        return dir ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key]);
-      }
-      // Sort numbers
-      if (key === 'pages') {
-        return dir ? a[key] - b[key] : b[key] - a[key];
-      }
-      // Sort boolean
-      if (key === 'isRead') {
-        return dir ? (a[key] ? -1 : 1) : a[key] ? 1 : -1;
-      }
-    });
-  };
-
-  const getBooks = async (key = 'title') => {
-    // Default is to sort by title
-    try {
-      const data = await getDocs(booksCol);
-      const filteredData = data.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-
-      const newSortDirections = { ...sortDirections };
-      newSortDirections[key] = !newSortDirections[key];
-      setSortDirections(newSortDirections);
-      sortArray(filteredData, key, newSortDirections[key]);
-
-      setBookList(filteredData);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    getBooks();
-  }, []);
-
   return (
     <div>
       <h1>Library</h1>
-      <AddBook getBooks={getBooks} />
-      <div className="books-container">
-        <BooksHeader getBooks={getBooks} />
-        <Books getBooks={getBooks} bookList={bookList} />
-      </div>
+      <BookListContextProvider>
+        <AddBook />
+        <div className="books-container">
+          <BooksHeader />
+          <Books />
+        </div>
+      </BookListContextProvider>
     </div>
   );
 }

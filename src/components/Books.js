@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import Book from './Book';
 import EditBookModal from './EditBookModal';
+import { BookListContext } from '../contexts/BookListContext';
 
-export default function Books({ getBooks, bookList }) {
+export default function Books() {
+  const {bookList, getBooks} = useContext(BookListContext)
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookToEdit, setBookToEdit] = useState(null);
 
@@ -42,6 +45,11 @@ export default function Books({ getBooks, bookList }) {
     getBooks();
   };
 
+  // Initial randeringx
+  useEffect(() => {
+    getBooks();
+  }, []);
+
   return (
     <div>
       {bookList.map((book) => {
@@ -49,7 +57,6 @@ export default function Books({ getBooks, bookList }) {
           <Book
             key={book.id}
             book={book}
-            getBooks={getBooks}
             editBook={editBook}
           />
         );

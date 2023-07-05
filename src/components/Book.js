@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
+import { BookListContext } from '../contexts/BookListContext';
 
-
-export default function Book({ book, getBooks, editBook }) {
+export default function Book({ book, editBook }) {
+  const { getBooks } = useContext(BookListContext);
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -44,13 +45,14 @@ export default function Book({ book, getBooks, editBook }) {
       </div>
       {isHovered && (
         <div className="buttons">
-          <button className="edit-button" onClick={() => editBook(book)}>✍️</button>
+          <button className="edit-button" onClick={() => editBook(book)}>
+            ✍️
+          </button>
           <button className="delete-button" onClick={() => deleteBook(book.id)}>
             🗑️
           </button>
         </div>
       )}
-     
     </div>
   );
 }
