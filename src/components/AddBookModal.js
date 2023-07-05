@@ -54,6 +54,7 @@ export default function AddBookModal({ isOpen, closeModal }) {
               id="title"
               type="text"
               name="title"
+              className='book-details-input'
               value={title}
               onChange={handleChange}
             />
@@ -66,6 +67,7 @@ export default function AddBookModal({ isOpen, closeModal }) {
               id="author"
               type="text"
               name="author"
+              className='book-details-input'
               value={author}
               onChange={handleChange}
             />
@@ -78,6 +80,7 @@ export default function AddBookModal({ isOpen, closeModal }) {
               id="year"
               type="number"
               name="year"
+              className='book-details-input'
               // value={year}
               onChange={handleChange}
             />

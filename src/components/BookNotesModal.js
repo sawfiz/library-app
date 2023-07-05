@@ -17,48 +17,54 @@ export default function BookNotesModal({
       onRequestClose={closeModal}
     >
       <h2>Book Notes</h2>
-      <form onSubmit={handleSubmit}>
+      <form className="book-notes-form" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="lead">
-            What led me to this book
-            <textarea
-              name="lead"
-              value={bookToEdit.lead}
-              onChange={handleChange}
-            ></textarea>
+          <label className="block-label" htmlFor="lead">
+            What led me to this book{' '}
           </label>
+          <textarea
+            name="lead"
+            rows="3"
+            cols="60"
+            className="notes-textarea"
+            value={bookToEdit.lead}
+            onChange={handleChange}
+          ></textarea>
         </div>
-        <div>
-          <label htmlFor="startDate">
+        <div className="notes-dates">
+          <label htmlFor="startDate" className="block-label">
             Start
-            <input
-              name="startDate"
-              type="date"
-              value={bookToEdit.startDate}
-              onChange={handleChange}
-            ></input>
           </label>
-        </div>
-        <div>
-          <label htmlFor="finishDate">
+          <input
+            name="startDate"
+            type="date"
+            className="date-input"
+            value={bookToEdit.startDate}
+            onChange={handleChange}
+          ></input>
+          <label htmlFor="finishDate" className="block-label">
             Finish
-            <input
-              name="finishDate"
-              type="date"
-              value={bookToEdit.finishDate}
-              onChange={handleChange}
-            ></input>
           </label>
+          <input
+            name="finishDate"
+            type="date"
+            className="date-input"
+            value={bookToEdit.finishDate}
+            onChange={handleChange}
+          ></input>
         </div>
         <div>
-          <label htmlFor="notes">
+          <label className="block-label" htmlFor="notes">
             What led me to this book
-            <textarea
-              name="notes"
-              value={bookToEdit.notes}
-              onChange={handleChange}
-            ></textarea>
           </label>
+          <textarea
+            name="notes"
+            rows="10"
+            cols="60"
+            className="notes-textarea"
+            value={bookToEdit.notes}
+            onChange={handleChange}
+          ></textarea>
         </div>
         <div className="submit-button-container">
           <button className="submit-button" type="submit">

@@ -24,6 +24,7 @@ export default function EditBookModal({
               <input
                 name="title"
                 type="text"
+                className='book-details-input'
                 value={bookToEdit.title}
                 onChange={handleChange}
               />
@@ -35,6 +36,7 @@ export default function EditBookModal({
               <input
                 name="author"
                 type="text"
+                className='book-details-input'
                 value={bookToEdit.author}
                 onChange={handleChange}
               />
@@ -46,6 +48,7 @@ export default function EditBookModal({
               <input
                 name="year"
                 type="number"
+                className='book-details-input'
                 value={bookToEdit.year}
                 onChange={handleChange}
               />

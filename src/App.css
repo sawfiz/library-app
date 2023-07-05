@@ -50,7 +50,7 @@ h1 {
 .input-container {
   margin: 0.25rem;
 }
-input {
+.book-details-input {
   position: absolute;
   left: 7rem;
   width: 320px;
@@ -156,4 +156,29 @@ input {
   gap: 1rem;
   justify-content: center;
   align-items: center;
+}
+
+.book-notes-form {
+  background: #fcf8ea;
+  display: flex;
+  padding: 1rem 1rem 1rem 1rem;
+  flex-direction: column;
+}
+
+.block-label {
+  display: block;
+}
+.notes-textarea {
+  resize: none;
+  outline: none;
+}
+.notes-dates {
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 3fr;
+  /* justify-content: space-between; */
+}
+.date-input {
+  display: block;
+  width: 6rem;
 }
