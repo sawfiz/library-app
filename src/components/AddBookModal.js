@@ -100,7 +100,7 @@ export default function AddBookModal({ isOpen, closeModal }) {
         <div>
           <label htmlFor="status">
             Read:
-            <select id="status">
+            <select id="status" className='status-select'>
             <option value="Want to read">Want to read</option>
               <option value="Not started">Not started</option>
               <option value="Reading">Reading</option>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root'); // Set the root element for the modal
@@ -68,7 +68,7 @@ export default function EditBookModal({
           <div>
           <label htmlFor="status">
             Read:
-            <select id="status" name="status" value={bookToEdit.status} onChange={handleChange}>
+            <select id="status" name="status" className='status-select' value={bookToEdit.status} onChange={handleChange}>
               <option value="Want to read">Want to read</option>
               <option value="Not started">Not started</option>
               <option value="Reading">Reading</option>

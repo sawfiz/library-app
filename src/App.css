@@ -68,7 +68,7 @@ input {
   outline: none;
   margin-bottom: 3rem;
 }
-select {
+.status-select {
   position: absolute;
   left: 7rem;
 }
@@ -92,7 +92,7 @@ select {
 .books-header,
 .book {
   display: grid;
-  grid-template-columns: 40% 30% 15% 15% 10%;
+  grid-template-columns: 40% 30% 10% 17% 3% 10%;
 }
 
 .books-header {
@@ -119,16 +119,20 @@ select {
 .book:hover {
   background-color: honeydew;
 }
-.title,
-.author, .status {
+.left{
   text-align: left;
 }
-.year {
+.right {
   text-align: right;
+}
+.book-status {
+  background: #0000;
+  border: none;
+  outline: none;
 }
 .buttons {
   display: flex;
-  justify-content: center;
+  margin-left: 1rem;
   gap: 0.5rem;
 }
 .edit-button,

@@ -20,9 +20,6 @@ export default function Books() {
   // Function to handle changes in the EditBookModal
   const handleChange = (e) => {
     setBookToEdit({ ...bookToEdit, [e.target.name]: e.target.value });
-    console.log("🚀 ~ file: Books.js:23 ~ handleChange ~ e.target.value:", e.target.value)
-    console.log("🚀 ~ file: Books.js:23 ~ handleChange ~ e.target.name:", e.target.name)
-    console.log("🚀 ~ file: Books.js:23 ~ handleChange ~ bookToEdit:", bookToEdit)
   };
 
   // Function to handle submitting the EditBookModal
