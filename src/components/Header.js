@@ -5,7 +5,7 @@ import logo from '../images/library.svg'
 export default function Header() {
   return (
     <header>
-        <img class="logo" src={logo} alt="" />
+        <img className="logo" src={logo} alt="" />
         <h1>
         My Reading List
         </h1>

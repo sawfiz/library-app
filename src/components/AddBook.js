@@ -19,7 +19,7 @@ export default function AddBook() {
   
   return (
     <div>
-      <button className="addBookButton" onClick={openModal}> <img class="addBookImg" src={addButtonImg} alt="" /></button>
+      <button className="addBookButton" onClick={openModal}> <img className="addBookImg" src={addButtonImg} alt="" /></button>
       {isModalOpen && <AddBookModal isOpen={isModalOpen} closeModal={closeModal}/>}
       </div>
   )
