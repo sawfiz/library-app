@@ -115,7 +115,7 @@ h1 {
 .books-header,
 .book {
   display: grid;
-  grid-template-columns: 40% 30% 10% 17% 3% 30%;
+  grid-template-columns: 35% 27% 10% 17% 3% 8%;
 }
 
 .books-header {
